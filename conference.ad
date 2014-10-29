@@ -342,15 +342,23 @@ a|
 |===
 
 
-// ************* ABOUT OS FABRIC8 PLATFORM **************
+// ************* ABOUT FABRIC8 PLATFORM **************
 [data-background="images/wjax_bgrd2.png"]
 == What is fabric8 +++&nbsp;<i class="fa fa-question"></i>&nbsp;+++
 
-* fabric8 is an open-source integration platform for deep management of Java Containers (JVMs).
-* fabric8 makes it really easy to provision, automate, configure, and manage from a central location with a consistent UI and UX.
-* It also gives you non-functional requirements like configuration management, service discovery failover, load balancing, centralized monitoring, automation, and more!
+* Open Source integration platform for deep management of Java Containers (JVMs).
 
-image::fabric/fabric-diagram1.png[]
+image::fabric/cloud-fabric8.png[]
+
+// ************* ABOUT FABRIC8 PLATFORM **************
+[data-background="images/wjax_bgrd2.png"]
+== What is fabric8 +++&nbsp;<i class="fa fa-question"></i>&nbsp;+++
+
+[.fragment]
+* Makes it really easy to provision, automate, configure, and manage from a central location with a consistent UI and UX.
+
+[.fragment]
+* Gives you more -> non-functional requirements like configuration management, service discovery failover, load balancing, centralized monitoring, automation, and more!
 
 // ************ FABRIC 8 ARCHITECTURE **************
 [data-background="images/wjax_bgrd2.png"]
