@@ -13,7 +13,6 @@
 :revealjs_theme: conference-wjax
 :revealjs_vertical_alignment: false
 :revealjs_history: true
-:sourcesdir: /Users/chmoulli/MyProjects/conferences/devnation-2014-slideshow/snippet/src/main/java/
 :source-highlighter: highlightjs
 //:source-highlighter: coderay, highlightjs, pygments
 :stylesdir: /Users/chmoulli/RedHat/GPE/content/hyla/resources/styles
@@ -178,8 +177,6 @@ image:camel/pipeline.png[]
 [data-background="images/wjax_bgrd2.png"]
 == Example
 
-image:camel/inout.png[]
-
 [source,java]
 ----
 from("cxf:WS?dataFormat="MESSAGE")
@@ -191,16 +188,40 @@ from("cxf:WS?dataFormat="MESSAGE")
           .beanRef("errorService","wrongSoapRequest");
 ----
 
+image:camel/inout.png[width="50%"]
+
 // ************** ACTIVEMQ ************
 [data-background="images/wjax_bgrd2.png"]
-== Route, Mediate messages
+== Middleware Broker
 
-[.newline]
-* ACTIVEMQ
+* +++<i class="fa fa-arrow-right"></i>+++ High performance, *reliable JMS* messaging fabric
+* Supporting JMS, C, C++, .Net, Stomp, AMQP *clients*
+* Protocols : TCP/SSL/AMQP/MQTT/HTTPS/WebSocket ...
+
+image:activemq/broker-architecture.png[width="60%"]
+
+// ************** ACTIVEMQ ************
+[data-background="images/wjax_bgrd2.png"]
+== Master/Slave
+
+* *High-Availability* / *Failover*
+* Brokers compete to acquire *lock* - FS/DB
+
+image:activemq/master-slave.png[width="60%"]
+
+// ************** ACTIVEMQ ************
+// [data-background="images/wjax_bgrd2.png"]
+// == Network of Brokers
+//
+// * *Forward* messages
+// * Loadbalancing, isolate brokers - security, ...
+//
+// image:activemq/network-of-broker.png[]
+//
 
 // ************** BUS **************
 [data-background="images/wjax_bgrd2.png"]
-== Transport message
+== BUS Message
 
 |===
 | .2+| image:integration/bus.png[width="95%",float="right"]
@@ -221,6 +242,46 @@ image::integration/bus_application.png[width="50%"]
 == Integration everywhere
 
 image::fuse/integration_everywhere.png[]
+
+// ************** BUS EXAMPLE  **************
+[data-background="images/wjax_bgrd2.png"]
+== More complex topology
+
+image::fuse/distributed_topology.png[width="90%"]
+
+// ************** Karaf ************
+[data-background="images/wjax_bgrd2.png"]
+== Integration complexity
+
+[cols="40,60"]
+|===
+| .2+|image:fuse/manage_container_1.png[width="650"]
+a| * Karaf is not the only container
+   * Can we support
+   *other* Java container using *Fuse* ?
+   ** Web / JavaEE
+   ** Java Micro container
+   ** Docker ... |
+|===
+
+// ************** Karaf ************
+[data-background="images/wjax_bgrd2.png"]
+== Internet of Things, Integration everywhere
+
+[cols="30,70"]
+|===
+| .2+| image:fuse/manage_container_2.png[]
+a| * Infrastructure :
+** Local
+** Remote
+** Virtual Machines
+** Iaas/Paas
+** +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ *xPaas* |
+|===
+
+* Do you support such ecosystem ?
+* How can we manage *hybrid* inf. (config, ip, provisioning) ?
+
 
 // ************* HOW TO MANAGE DISTRIBUTED ************
 [data-background="images/wjax_bgrd2.png"]
