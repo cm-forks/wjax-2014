@@ -3,4 +3,4 @@
 - Open a terminal under this directory location
 - Run Hyla generate command
 
-  hyla generate --backend revealjs -s . -d generated -r adoc2html -a data-uri! -a source-highlighter="highlightjs"
+  hyla generate --backend revealjs -s . -d generated -r adoc2html -a source-highlighter="highlightjs" -a data-uri!

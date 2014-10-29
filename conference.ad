@@ -87,8 +87,25 @@ image::bande-dessinee.jpeg[float="left"]
 [data-background="images/wjax_bgrd2.png"]
 == Agenda
 
-* Integration Bricks
-* Integration Platform
+[.fragment]
+* Integration concepts
+
+[.fragment]
+* Bricks : Apache Camel, ActiveMQ, Karaf, CXF
+
+[.fragment]
+* New Integration challenges +
+
+[.fragment]
+* Internet Of Things
+
+[.fragment]
+* Integration everywhere (JVM, Machine, ...)
+
+[.fragment]
+* Fabric8: OS Integration Platform
+
+[.fragment]
 * Demo, ...
 
 // ************ INTEGRATION CONCEPT 1 **************
@@ -96,18 +113,35 @@ image::bande-dessinee.jpeg[float="left"]
 == Message
 
 [.newline]
-+++<i class="fa fa-arrow-right"></i>+++ Contains information "MetaData" & "Body"
-
 image::integration/message.png[]
+
+[.newline]
+[.fragment]
++++<i class="fa fa-arrow-right"></i>+++ Contains "MetaData" information as Header/Properties & "Payload" as Body
 
 // ************ INTEGRATION CONCEPT 2 **************
 [data-background="images/wjax_bgrd2.png"]
 == Decoupling
 
 [.newline]
-+++<i class="fa fa-arrow-right"></i>+++ Producer & Consumer exchange *Message*
-
 image::integration/producer-consumer.png[width="17%"]
+
+[.newline]
+[.fragment]
++++<i class="fa fa-arrow-right"></i>+++ Client : Producer OR Consumer exchange *Message(s)*
+
+// ************** INTEGRATION CONCEPT 3 **************
+[data-background="images/wjax_bgrd2.png"]
+== Messages transported -> BUS
+
+|===
+| .2+| image:integration/bus.png[width="95%",float="right"]
+a|
+[.newline]
++++<i class="fa fa-wrench"></i>+++ Is a Layer to transport *messages*
+
++++<i class="fa fa-arrow-right"></i>+++ Called Enterprise Service Bus |
+|===
 
 // ************** INTEGRATION FUNDAMENTALS ************
 [data-background="images/wjax_bgrd2.png"]
@@ -117,7 +151,7 @@ image::integration/producer-consumer.png[width="17%"]
 * Messaging (JMS) / Transport : http://activemq.apache.org[ActiveMQ Broker]
 * Routing / Mediation : http://camel.apache.org[Camel Integration framework]
 * REST & Web Services : http://cxf.apache.org[Tooling CXF]
-* Integration container : http://karaf.apache.org[Karaf]
+* Integration OSGI container : http://karaf.apache.org[Karaf]
 
 // ************** CAMEL ************
 [data-background="images/wjax_bgrd2.png"]
@@ -196,16 +230,16 @@ image:camel/inout.png[width="50%"]
 
 * +++<i class="fa fa-arrow-right"></i>+++ High performance, *reliable JMS* messaging fabric
 * Supporting JMS, C, C++, .Net, Stomp, AMQP *clients*
-* Protocols : TCP/SSL/AMQP/MQTT/HTTPS/WebSocket ...
+* Providing : TCP/SSL/AMQP/MQTT/HTTPS/WebSocket ...
 
 image:activemq/broker-architecture.png[width="60%"]
 
 // ************** ACTIVEMQ ************
 [data-background="images/wjax_bgrd2.png"]
-== Master/Slave
+== HA & Failover
 
-* *High-Availability* / *Failover*
-* Brokers compete to acquire *lock* - FS/DB
++++<i class="fa fa-arrow-right"></i>+++ Brokers compete to acquire *lock* on FileSystem/DataBase
++++<i class="fa fa-arrow-right"></i>+++ Clients use failover protocol to switch
 
 image:activemq/master-slave.png[width="60%"]
 
@@ -219,119 +253,155 @@ image:activemq/master-slave.png[width="60%"]
 // image:activemq/network-of-broker.png[]
 //
 
-// ************** BUS **************
+// ************** CLASSICAL TOPOLOGY  **************
 [data-background="images/wjax_bgrd2.png"]
-== BUS Message
+== Classical Topology
 
-|===
-| .2+| image:integration/bus.png[width="95%",float="right"]
-a|
-[.newline]
-* +++<i class="fa fa-wrench"></i>+++ Layer to transport messages
-* +++<i class="fa fa-arrow-right"></i>+++ Enterprise Service Bus |
-|===
-
-// ************** BUS EXAMPLE  **************
-[data-background="images/wjax_bgrd2.png"]
-== Web Service to DB
+* Deployment done on "Enterprise Service Bus"
+* Very centric approach, does not fit new challenges ...
 
 image::integration/bus_application.png[width="50%"]
 
-// ************* INTEGRATION EVERYWHERE ***********
+// ************** COMPLEX TOPOLOGY  **************
 [data-background="images/wjax_bgrd2.png"]
-== Integration everywhere
+== Business & IT Complexity
+
+image::fuse/distributed_topology.png[width="%"]
+
+// ************* NEW CHALLENGES ***********
+[data-background="images/wjax_bgrd2.png"]
+== New challenges
+
+* Internet of Things, Integration everywhere
 
 image::fuse/integration_everywhere.png[]
 
-// ************** BUS EXAMPLE  **************
+// ************* ENVIRONMENT CHANGED ************
 [data-background="images/wjax_bgrd2.png"]
-== More complex topology
-
-image::fuse/distributed_topology.png[width="90%"]
-
-// ************** Karaf ************
-[data-background="images/wjax_bgrd2.png"]
-== Integration complexity
-
-[cols="40,60"]
-|===
-| .2+|image:fuse/manage_container_1.png[width="650"]
-a| * Karaf is not the only container
-   * Can we support
-   *other* Java container using *Fuse* ?
-   ** Web / JavaEE
-   ** Java Micro container
-   ** Docker ... |
-|===
-
-// ************** Karaf ************
-[data-background="images/wjax_bgrd2.png"]
-== Internet of Things, Integration everywhere
+== "Environment" changed
 
 [cols="30,70"]
 |===
-| .2+| image:fuse/manage_container_2.png[]
-a| * Infrastructure :
-** Local
-** Remote
-** Virtual Machines
-** Iaas/Paas
-** +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ *xPaas* |
+| .2+| image:fuse/distributed-environment-before.png[width="95%"]
+a| +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ Infrastructure is a mix :
+
+* Local, Remote,
+* Virtual Machines,
+* Iaas/Paas
+* *xPaas* |
 |===
 
-* Do you support such ecosystem ?
-* How can we manage *hybrid* inf. (config, ip, provisioning) ?
-
-
-// ************* HOW TO MANAGE DISTRIBUTED ************
+// ************* ENVIRONMENT CHANGED ************
 [data-background="images/wjax_bgrd2.png"]
-== Challenge of distributed & Modular environments
-text text
+== How to +++&nbsp;<i class="fa fa-question"></i>&nbsp;+++
 
-// *************DEPLOYMENT STRATEGY **********
-[data-background="images/wjax_bgrd2.png"]
-== Continuous deployment and management problematic
-text text
+[cols="30,70"]
+|===
+| .2+| image:fuse/distributed-environment-after.png[width="90%"]
+a|
+[.fragment]
+Manage IP/Hostname
 
-// ************* ABOUT OS INTEGRATION PLATFORM **************
+[.fragment]
+Handle Configurations, Access Rights |
+|===
+
+// ************* DIFFERENT CONTAINERS ************
 [data-background="images/wjax_bgrd2.png"]
-== What is an open source Integration Platform
-text text
+== Multiple containers
+
+[cols="40,60"]
+|===
+| .2+|image:fuse/several-containers-before.png[width="95%"]
+a| * Manage different containers
+   ** Karaf/Fuse OSGI
+   ** Web / JavaEE
+   ** Java Standalone
+   ** Docker ... |
+|===
+
+// ************* DIFFERENT CONTAINERS ************
+[data-background="images/wjax_bgrd2.png"]
+== How To +++&nbsp;<i class="fa fa-question"></i>&nbsp;+++
+
+[cols="40,60"]
+|===
+| .2+|image:fuse/several-containers-after.png[width="90%"]
+a|
+[.fragment]
+* Package, provision & deploy in different container types,
+
+[.fragment]
+* Manage my JVMs
+
+[.fragment]
+* Collect metrics, statistics
+
+[.fragment]
+* Parallelize jobs/works/... |
+|===
+
+
+// ************* ABOUT OS FABRIC8 PLATFORM **************
+[data-background="images/wjax_bgrd2.png"]
+== What is fabric8 +++&nbsp;<i class="fa fa-question"></i>&nbsp;+++
+
+* fabric8 is an open-source integration platform for deep management of Java Containers (JVMs).
+* fabric8 makes it really easy to provision, automate, configure, and manage from a central location with a consistent UI and UX.
+* It also gives you non-functional requirements like configuration management, service discovery failover, load balancing, centralized monitoring, automation, and more!
+
+image::fabric/fabric-diagram1.png[]
 
 // ************ FABRIC 8 ARCHITECTURE **************
 [data-background="images/wjax_bgrd2.png"]
-== Fabric8 Architecture
-text text
+== Architecture +++&nbsp;<i class="fa fa-cloud"></i>&nbsp;+++
 
-// ************** ENSEMBLE SERVER & REGISTRY ***********
-[data-background="images/wjax_bgrd2.png"]
-== Ensemble server & registry/repository
-text text
+* *Rely on* +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
+Zookeeper server (ensemble of 1,3, 5 or servers)
+* *Coordinating distributed* systems in a *reliable* way (electing leaders, implementing master/slave, sharding or federation of services).
+
+image:fuse/fabric-1.png[]
 
 // ************** AGENT ************
 [data-background="images/wjax_bgrd2.png"]
-== Fabric agent
-text text
+== Fabric Agent
+
+* *clients* communicating with Zookeeper server(s)
+
+image:fuse/fabric-2.png[]
+
+* +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ register container info (ports, services, endpoints, processes)
+
+* +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ get their provisioning
+
+// ************** Fabric ************
+[data-background="images/wjax_bgrd2.png"]
+== Profiles
+* *Envelope(s)* containing *artifacts* to be deployed, *parameters* (system, jvm, services) to be configured
+* Can be *versioned*, facilitate migration - rollback
+
+image::fuse/fabric-5.png[width="80%",height="80%"]
 
 // ************** DEMO 1 **************
 [data-background="images/wjax_bgrd2.png"]
-== Create a simple Camel project within JBDS, externalize some properties, build it and provision it into a new Fuse Managed Container (using JBoss Fuse GA). Present Fuse Management Container and some Plugins like Camel ,logs, ... (20 minutes)
-text text
+== REST to Fabric
+
+* DEMO
+* Create a simple Camel project within JBDS, externalize some properties, build it and provision it into a new Fuse Managed Container (using JBoss Fuse GA).
+* Present Fuse Management Container and some Plugins like Camel ,logs, ...
 
 // ************** LOADBALANCING **************
 [data-background="images/wjax_bgrd2.png"]
-== Loadbalancing of services (Camel), Virtualisation & Workload distribution - 5 minutes
-text text
+== Loadbalancing of services (Camel), Virtualisation & Workload distribution
 
-// *************** DEMO 2 ************
-[data-background="images/wjax_bgrd2.png"]
-== Deploy the first example/demo into a second Fuse Managed container and loadbalance requests using the Fabric registry and Fabric Camel Component (10 minutes)
-text text
+* DEMO
+* Deploy the first example/demo into a second Fuse Managed container and loadbalance requests using the Fabric registry and Fabric Camel Component (10 minutes)
 
 // ************** DEMO 3 ************
 [data-background="images/wjax_bgrd2.png"]
 == Workload distribution (AMQ Gateway)
-text text
+
+* DEMO
 
 // ************** WHAT REDHAT PROPOSES *************
 [data-background="images/wjax_bgrd2.png"]
