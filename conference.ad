@@ -413,22 +413,35 @@ image::fuse/fabric-5.png[width="80%",height="80%"]
 
 // ************** WHAT REDHAT PROPOSES *************
 [data-background="images/wjax_bgrd2.png"]
-== What RedHat proposes
-text text
+== RedHat
 
-// *************ROADMAP & FUTURE **************
-[data-background="images/wjax_bgrd2.png"]
-== Roadmap
-text text
+[.fragment]
+* Fuse Technology +++<i class="fa fa-arrow-right"></i>+++ Part of the RedHat Middleware Strategy - xPaas
+
+[.fragment]
+* Goal : Improve developer productivity, Accelerate innovation with rapid integrations, Lower cost and reduce risk
+
+JBoss xPaaS services for OpenShift represent Red Hat's vision and strategy for a dramatically new way of building and running enterprise applications that leverages the power of open hybrid cloud. We believe this will be a positive, disruptive force that will strengthen Red Hat's position as an industry leader in application development platforms.
+
+[.fragment]
+* Support, Subscription, Consultancy
+
+[.fragment]
+* Certififed releases of +++<i class="fa fa-arrow-right"></i>+++
+  JBoss Fuse & JBoss AMQ or xPaas
 
 // ************* QUESTIONS **********
+[data-background="images/wjax_bgrd2.png"]
 == Questions
 
 [cols="35,.<65"]
 |===
 
 .2+|image:questions.png[width="95%"]
-a|* Twitter : http://twitter.com/cmoulliard[@cmoulliard]
-a|* More info : http://camel.apache.org[Apache Camel], fabric8.io[Fabric8], http://fabric8.io[fabric8]
+a|* Twitter : http://twitter.com/cmoulliard[@cmoulliard] |
 |===
+
+* More info +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
+  - link:hawt.io[hawt.io], link:camel.apache.org[camel.apache.org], link:activemq.apache.org[activemq.apache.org]
+  - link:www.jboss.org/products/fuse.html[www.jboss.org/products/fuse.html]
 
