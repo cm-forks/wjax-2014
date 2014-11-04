@@ -45,7 +45,7 @@ import io.fabric8.quickstarts.rest.model.Order;
  * one of the methods would result in '/customerservice/customers'.
  */
 //@Path("/customerservice/")
-@Path("/demo/customerservice/")
+@Path("/cxf/demo/customerservice/")
 @Api(value = "/customerservice", description = "Operations about customerservice")
 public interface CustomerService {
 

@@ -31,7 +31,7 @@
 
     <camelContext trace="false" xmlns="http://camel.apache.org/schema/blueprint">
         <routeBuilder ref="restRoute"/>
-        <endpoint id="cxfrs-demo" uri="cxfrs://local://demo?resourceClasses={{demo.resource.classes}}&amp;loggingFeatureEnabled={{demo.logging.enable}}"/>
+        <endpoint id="cxfrs-demo" uri="cxfrs://demo?resourceClasses={{demo.resource.classes}}&amp;loggingFeatureEnabled={{demo.logging.enable}}"/>
         <!--
         <endpoint id="cxfrs-demo" uri="cxfrs://http://{{demo.rest.hostname}}:{{demo.rest.port}}?resourceClasses={{demo.resource.classes}}&amp;loggingFeatureEnabled={{demo.logging.enable}}"/>
         <endpoint id="cxfrs-demo" uri="fabric-camel:cluster:cxfrs://http://{{demo.rest.hostname}}:{{demo.rest.port}}?resourceClasses={{demo.resource.classes}}&amp;loggingFeatureEnabled={{demo.logging.enable}}"/>
