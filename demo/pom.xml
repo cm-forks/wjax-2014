@@ -50,7 +50,7 @@
         <!-- fabric8 deploy profile configuration -->
         <fabric8.profile>quickstarts-karaf-camel-rest</fabric8.profile>
         <fabric8.parentProfiles>feature-camel</fabric8.parentProfiles>
-        <fabric8.features>camel-cxf swagger</fabric8.features>
+        <fabric8.features>camel-cxf</fabric8.features>
     </properties>
 
     <dependencyManagement>

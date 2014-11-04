@@ -15,7 +15,6 @@ public class RestToService extends RouteBuilder {
 
         from(CXF_RS_ENDPOINT_SERVER_URI)
            .setExchangePattern(ExchangePattern.InOut)
-           .log("What we get : ${body}")
            .choice()
                 // GetCustomer
                 .when().simple("${header.operationName} contains 'getCustomer'")

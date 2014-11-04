@@ -44,7 +44,8 @@ import io.fabric8.quickstarts.rest.model.Order;
  * this class will be hosted in '/customerservice'.  An @Path("/customers") annotation on
  * one of the methods would result in '/customerservice/customers'.
  */
-@Path("/customerservice/")
+//@Path("/customerservice/")
+@Path("/demo/customerservice/")
 @Api(value = "/customerservice", description = "Operations about customerservice")
 public interface CustomerService {
 

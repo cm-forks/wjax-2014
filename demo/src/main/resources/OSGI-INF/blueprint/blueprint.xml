@@ -18,20 +18,31 @@
 -->
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd"
+           xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+           http://camel.apache.org/schema/blueprint/cxf http://camel.apache.org/schema/cxf/camel-cxf-blueprint.xsd"
            xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0">
 
     <!-- Load properties file -->
     <cm:property-placeholder persistent-id="demo" id="demo"/>
-
-    <bean id="jsonProvider" class="org.apache.cxf.jaxrs.provider.json.JSONProvider"/>
 
     <bean id="customerService" class="io.fabric8.quickstarts.rest.bean.CustomerServiceImpl"/>
     <bean id="restRoute" class="io.fabric8.quickstarts.rest.route.RestToService"/>
 
     <camelContext trace="false" xmlns="http://camel.apache.org/schema/blueprint">
         <routeBuilder ref="restRoute"/>
+        <endpoint id="cxfrs-demo" uri="cxfrs://local://demo?resourceClasses={{demo.resource.classes}}&amp;loggingFeatureEnabled={{demo.logging.enable}}"/>
+        <!--
         <endpoint id="cxfrs-demo" uri="cxfrs://http://{{demo.rest.hostname}}:{{demo.rest.port}}?resourceClasses={{demo.resource.classes}}&amp;loggingFeatureEnabled={{demo.logging.enable}}"/>
+        <endpoint id="cxfrs-demo" uri="fabric-camel:cluster:cxfrs://http://{{demo.rest.hostname}}:{{demo.rest.port}}?resourceClasses={{demo.resource.classes}}&amp;loggingFeatureEnabled={{demo.logging.enable}}"/>
+        -->
     </camelContext>
+
+    <!--    <reference id="curator" interface="org.apache.curator.framework.CuratorFramework"/>
+    <reference interface="org.apache.camel.spi.ComponentResolver" filter="(component=cxf)"/>
+
+    <bean id="fabric-camel" class="io.fabric8.camel.FabricComponent">
+        <property name="curator" ref="curator"/>
+    </bean>-->
 
 </blueprint>
